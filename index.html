@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arturs Lapiņš Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-size: 11px;
+        }
+
+        .desktop {
+            width: 100vw;
+            height: 100vh;
+            background: #008080;
+            position: relative;
+        }
+
+        .taskbar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            background: #c0c0c0;
+            border-top: 1px solid #dfdfdf;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+
+        .start-button {
+            background: #c0c0c0;
+            border: 1px outset #c0c0c0;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .clock {
+            background: #c0c0c0;
+            border: 1px inset #c0c0c0;
+            padding: 4px 8px;
+        }
+
+        .icon {
+            position: absolute;
+            width: 64px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            padding: 5px;
+        }
+
+        .icon:hover {
+            background: rgba(0,0,255,0.3);
+        }
+
+        .icon-image {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .icon-label {
+            font-size: 11px;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .window {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            z-index: 10;
+            display: none;
+        }
+
+        .window-header {
+            height: 20px;
+            background: #000080;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+
+        .window-header button {
+            background: #c0c0c0;
+            border: 1px outset #c0c0c0;
+            width: 16px;
+            height: 14px;
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        .window-content {
+            padding: 15px;
+            height: calc(100% - 44px);
+            overflow: auto;
+            background: white;
+        }
+
+        .window-content h2, .window-content h3 {
+            margin-top: 0;
+            color: #000080;
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop">
+        <div class="taskbar">
+            <div class="start-button">Start</div>
+            <div class="clock" id="clock">20:00:00</div>
+        </div>
+        
+        <div class="icon" onclick="openWindow('about')" style="top: 20px; left: 20px;">
+            <div class="icon-image">📁</div>
+            <div class="icon-label">About Me</div>
+        </div>
+        
+        <div class="icon" onclick="openWindow('projects')" style="top: 120px; left: 20px;">
+            <div class="icon-image">💻</div>
+            <div class="icon-label">Projects</div>
+        </div>
+
+        <div class="icon" onclick="openWindow('contact')" style="top: 220px; left: 20px;">
+            <div class="icon-image">📧</div>
+            <div class="icon-label">Contact</div>
+        </div>
+        
+        <div id="about-window" class="window" style="top: 50px; left: 100px;">
+            <div class="window-header">
+                <span>About Me</span>
+                <button onclick="closeWindow('about')">×</button>
+            </div>
+            <div class="window-content">
+                <h2>Arturs Lapiņš</h2>
+                <p><strong>Developer & Computer Science Student</strong></p>
+                <p>Sveiki! Es esmu Arturs, datorzinatnes students, kas aizraujas ar programmēšanu un jaunajām tehnoloģijām.</p>
+                <p>Mani interesē:</p>
+                <ul>
+                    <li>Web Development (React, JavaScript, TypeScript)</li>
+                    <li>3D Graphics (Three.js)</li>
+                    <li>Backend Development</li>
+                    <li>Database Design</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="projects-window" class="window" style="top: 80px; left: 150px;">
+            <div class="window-header">
+                <span>My Projects</span>
+                <button onclick="closeWindow('projects')">×</button>
+            </div>
+            <div class="window-content">
+                <h3>🌟 3D Portfolio Website</h3>
+                <p>Interaktīvs portfolio ar Three.js un TypeScript</p>
+                
+                <h3>💻 Web Applications</h3>
+                <p>Dažādas React un JavaScript aplikācijas</p>
+                
+                <h3>🎮 Mini Games</h3>
+                <p>Vienkārši spēles JavaScript</p>
+                
+                <h3>📱 Mobile Apps</h3>
+                <p>React Native projektsi</p>
+            </div>
+        </div>
+
+        <div id="contact-window" class="window" style="top: 110px; left: 200px;">
+            <div class="window-header">
+                <span>Contact</span>
+                <button onclick="closeWindow('contact')">×</button>
+            </div>
+            <div class="window-content">
+                <h2>Sazināties ar mani</h2>
+                <p><strong>Email:</strong> arturs@example.com</p>
+                <p><strong>GitHub:</strong> github.com/arturs</p>
+                <p><strong>LinkedIn:</strong> linkedin.com/in/arturs</p>
+                <p><strong>Location:</strong> Rīga, Latvija</p>
+                
+                <h3>Skills</h3>
+                <p>JavaScript, TypeScript, React, Node.js, Three.js, HTML/CSS, Git</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openWindow(windowId) {
+            document.getElementById(windowId + '-window').style.display = 'block';
+        }
+
+        function closeWindow(windowId) {
+            document.getElementById(windowId + '-window').style.display = 'none';
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const time = now.toTimeString().slice(0, 8);
+            document.getElementById('clock').textContent = time;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
