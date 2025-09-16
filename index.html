@@ -1,203 +1,360 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Arturs Lapiņš Portfolio</title>
+    <title>Arturs Lapiņš - Portfolio OS</title>
     <style>
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            font-family: 'MS Sans Serif', Arial, sans-serif;
-            font-size: 11px;
-        }
-
-        .desktop {
-            width: 100vw;
-            height: 100vh;
-            background: #008080;
-            position: relative;
-        }
-
-        .taskbar {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 30px;
-            background: #c0c0c0;
-            border-top: 1px solid #dfdfdf;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5px;
             box-sizing: border-box;
         }
 
-        .start-button {
+        body {
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            overflow: hidden;
+            background: #008080;
+        }
+
+        .os-window {
+            width: 100vw;
+            height: 100vh;
             background: #c0c0c0;
-            border: 1px outset #c0c0c0;
-            padding: 4px 12px;
-            cursor: pointer;
+            border: 2px inset #c0c0c0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            height: 25px;
+            background: linear-gradient(to right, #1084d0, #70b7e3);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
             font-weight: bold;
+            font-size: 14px;
+        }
+
+        .menu-bar {
+            height: 25px;
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item {
+            padding: 5px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            border: 1px transparent solid;
+        }
+
+        .menu-item:hover {
+            background: #e0e0e0;
+            border: 1px outset #c0c0c0;
+        }
+
+        .menu-item.active {
+            background: #d0d0d0;
+            border: 1px inset #c0c0c0;
+        }
+
+        .content-area {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .home-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .name {
+            font-size: 48px;
+            color: #000080;
+            text-shadow: 2px 2px 0px #808080;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #008000;
+            margin-bottom: 30px;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .nav-button {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            color: #000080;
+            transition: all 0.1s;
+        }
+
+        .nav-button:hover {
+            background: #d0d0d0;
+        }
+
+        .nav-button:active {
+            border: 2px inset #c0c0c0;
+        }
+
+        .nav-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .page-content h2 {
+            color: #000080;
+            font-size: 32px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000080;
+            padding-bottom: 10px;
+        }
+
+        .page-content h3 {
+            color: #008000;
+            font-size: 24px;
+            margin: 20px 0 10px 0;
+        }
+
+        .page-content p {
+            font-size: 18px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .skill-item {
+            background: #008080;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #004040;
+            font-size: 16px;
+        }
+
+        .contact-info {
+            background: #e0e0e0;
+            border: 1px inset #c0c0c0;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .project-item {
+            background: #f0f0f0;
+            border: 1px outset #c0c0c0;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .status-bar {
+            height: 20px;
+            background: #c0c0c0;
+            border-top: 1px solid #808080;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 12px;
         }
 
         .clock {
-            background: #c0c0c0;
-            border: 1px inset #c0c0c0;
-            padding: 4px 8px;
-        }
-
-        .icon {
-            position: absolute;
-            width: 64px;
-            text-align: center;
-            cursor: pointer;
-            color: white;
-            padding: 5px;
-        }
-
-        .icon:hover {
-            background: rgba(0,0,255,0.3);
-        }
-
-        .icon-image {
-            font-size: 32px;
-            margin-bottom: 5px;
-        }
-
-        .icon-label {
-            font-size: 11px;
-            text-shadow: 1px 1px 1px black;
-        }
-
-        .window {
-            position: absolute;
-            width: 400px;
-            height: 300px;
-            background: #c0c0c0;
-            border: 2px outset #c0c0c0;
-            z-index: 10;
-            display: none;
-        }
-
-        .window-header {
-            height: 20px;
-            background: #000080;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2px 5px;
-            font-weight: bold;
-        }
-
-        .window-header button {
-            background: #c0c0c0;
-            border: 1px outset #c0c0c0;
-            width: 16px;
-            height: 14px;
-            cursor: pointer;
-            font-size: 10px;
-        }
-
-        .window-content {
-            padding: 15px;
-            height: calc(100% - 44px);
-            overflow: auto;
-            background: white;
-        }
-
-        .window-content h2, .window-content h3 {
-            margin-top: 0;
-            color: #000080;
+            margin-left: auto;
         }
     </style>
 </head>
 <body>
-    <div class="desktop">
-        <div class="taskbar">
-            <div class="start-button">Start</div>
-            <div class="clock" id="clock">20:00:00</div>
+    <div class="os-window">
+        <div class="title-bar">
+            Arturs Lapiņš - Portfolio Showcase 2025
         </div>
         
-        <div class="icon" onclick="openWindow('about')" style="top: 20px; left: 20px;">
-            <div class="icon-image">📁</div>
-            <div class="icon-label">About Me</div>
-        </div>
-        
-        <div class="icon" onclick="openWindow('projects')" style="top: 120px; left: 20px;">
-            <div class="icon-image">💻</div>
-            <div class="icon-label">Projects</div>
+        <div class="menu-bar">
+            <div class="menu-item active" onclick="showPage('home')">HOME</div>
+            <div class="menu-item" onclick="showPage('about')">ABOUT</div>
+            <div class="menu-item" onclick="showPage('experience')">EXPERIENCE</div>
+            <div class="menu-item" onclick="showPage('projects')">PROJECTS</div>
+            <div class="menu-item" onclick="showPage('contact')">CONTACT</div>
         </div>
 
-        <div class="icon" onclick="openWindow('contact')" style="top: 220px; left: 20px;">
-            <div class="icon-image">📧</div>
-            <div class="icon-label">Contact</div>
-        </div>
-        
-        <div id="about-window" class="window" style="top: 50px; left: 100px;">
-            <div class="window-header">
-                <span>About Me</span>
-                <button onclick="closeWindow('about')">×</button>
-            </div>
-            <div class="window-content">
-                <h2>Arturs Lapiņš</h2>
-                <p><strong>Developer & Computer Science Student</strong></p>
-                <p>Sveiki! Es esmu Arturs, datorzinatnes students, kas aizraujas ar programmēšanu un jaunajām tehnoloģijām.</p>
-                <p>Mani interesē:</p>
-                <ul>
-                    <li>Web Development (React, JavaScript, TypeScript)</li>
-                    <li>3D Graphics (Three.js)</li>
-                    <li>Backend Development</li>
-                    <li>Database Design</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div id="projects-window" class="window" style="top: 80px; left: 150px;">
-            <div class="window-header">
-                <span>My Projects</span>
-                <button onclick="closeWindow('projects')">×</button>
-            </div>
-            <div class="window-content">
-                <h3>🌟 3D Portfolio Website</h3>
-                <p>Interaktīvs portfolio ar Three.js un TypeScript</p>
+        <div class="content-area">
+            <!-- HOME PAGE -->
+            <div id="home" class="page active">
+                <div class="home-header">
+                    <div class="name">ARTURS LAPIŅŠ</div>
+                    <div class="title">DEVELOPER & COMPUTER SCIENCE STUDENT</div>
+                </div>
                 
-                <h3>💻 Web Applications</h3>
-                <p>Dažādas React un JavaScript aplikācijas</p>
-                
-                <h3>🎮 Mini Games</h3>
-                <p>Vienkārši spēles JavaScript</p>
-                
-                <h3>📱 Mobile Apps</h3>
-                <p>React Native projektsi</p>
+                <div class="nav-grid">
+                    <div class="nav-button" onclick="showPage('about')">
+                        <span class="nav-icon">👨‍💻</span>
+                        ABOUT ME
+                    </div>
+                    <div class="nav-button" onclick="showPage('experience')">
+                        <span class="nav-icon">🎓</span>
+                        EXPERIENCE
+                    </div>
+                    <div class="nav-button" onclick="showPage('projects')">
+                        <span class="nav-icon">💻</span>
+                        PROJECTS
+                    </div>
+                    <div class="nav-button" onclick="showPage('contact')">
+                        <span class="nav-icon">📧</span>
+                        CONTACT
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT PAGE -->
+            <div id="about" class="page">
+                <div class="page-content">
+                    <h2>ABOUT ME</h2>
+                    <p>Sveiki! Es esmu Arturs, datorzinatnes students ar aizraušanos par programmēšanu un jaunajām tehnoloģijām.</p>
+                    
+                    <h3>SKILLS</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">JAVASCRIPT</div>
+                        <div class="skill-item">TYPESCRIPT</div>
+                        <div class="skill-item">REACT</div>
+                        <div class="skill-item">THREE.JS</div>
+                        <div class="skill-item">NODE.JS</div>
+                        <div class="skill-item">HTML/CSS</div>
+                        <div class="skill-item">GIT</div>
+                        <div class="skill-item">PYTHON</div>
+                    </div>
+                    
+                    <h3>INTERESTS</h3>
+                    <p>• Web Development & 3D Graphics</p>
+                    <p>• Backend Development</p>
+                    <p>• Database Design</p>
+                    <p>• Mobile App Development</p>
+                </div>
+            </div>
+
+            <!-- EXPERIENCE PAGE -->
+            <div id="experience" class="page">
+                <div class="page-content">
+                    <h2>EXPERIENCE</h2>
+                    
+                    <h3>EDUCATION</h3>
+                    <p><strong>Computer Science Student</strong> | 2023 - Present</p>
+                    <p>Studying computer science with focus on software development and modern technologies.</p>
+                    
+                    <h3>LEARNING PATH</h3>
+                    <p>• Frontend Development with React & TypeScript</p>
+                    <p>• 3D Web Development with Three.js</p>
+                    <p>• Backend API Development</p>
+                    <p>• Version Control with Git</p>
+                </div>
+            </div>
+
+            <!-- PROJECTS PAGE -->
+            <div id="projects" class="page">
+                <div class="page-content">
+                    <h2>PROJECTS</h2>
+                    
+                    <div class="project-item">
+                        <h3>3D Interactive Portfolio</h3>
+                        <p>Modern portfolio website built with Three.js, TypeScript, and React. Features immersive 3D environment with interactive elements.</p>
+                        <p><strong>Tech:</strong> Three.js, TypeScript, React, Webpack</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3>Portfolio OS Interface</h3>
+                        <p>Retro-style operating system interface for portfolio presentation. Built with vanilla HTML, CSS, and JavaScript.</p>
+                        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3>Web Applications</h3>
+                        <p>Various web applications and experiments built with modern web technologies.</p>
+                        <p><strong>Tech:</strong> React, Node.js, Express</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT PAGE -->
+            <div id="contact" class="page">
+                <div class="page-content">
+                    <h2>CONTACT</h2>
+                    
+                    <div class="contact-info">
+                        <h3>GET IN TOUCH</h3>
+                        <p><strong>Email:</strong> arturs@example.com</p>
+                        <p><strong>GitHub:</strong> github.com/arturs</p>
+                        <p><strong>LinkedIn:</strong> linkedin.com/in/arturs</p>
+                        <p><strong>Location:</strong> Rīga, Latvija</p>
+                    </div>
+                    
+                    <p>Interested in collaboration or have a project in mind? Feel free to reach out!</p>
+                    <p>I'm always open to discussing new opportunities and interesting projects.</p>
+                </div>
             </div>
         </div>
 
-        <div id="contact-window" class="window" style="top: 110px; left: 200px;">
-            <div class="window-header">
-                <span>Contact</span>
-                <button onclick="closeWindow('contact')">×</button>
-            </div>
-            <div class="window-content">
-                <h2>Sazināties ar mani</h2>
-                <p><strong>Email:</strong> arturs@example.com</p>
-                <p><strong>GitHub:</strong> github.com/arturs</p>
-                <p><strong>LinkedIn:</strong> linkedin.com/in/arturs</p>
-                <p><strong>Location:</strong> Rīga, Latvija</p>
-                
-                <h3>Skills</h3>
-                <p>JavaScript, TypeScript, React, Node.js, Three.js, HTML/CSS, Git</p>
-            </div>
+        <div class="status-bar">
+            <span>Ready</span>
+            <span class="clock" id="clock">00:00:00</span>
         </div>
     </div>
 
     <script>
-        function openWindow(windowId) {
-            document.getElementById(windowId + '-window').style.display = 'block';
-        }
-
-        function closeWindow(windowId) {
-            document.getElementById(windowId + '-window').style.display = 'none';
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Remove active class from menu items
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Activate corresponding menu item
+            event.target.classList.add('active');
         }
 
         function updateClock() {
