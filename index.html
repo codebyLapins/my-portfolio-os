@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Arturs Lapiņš - Portfolio OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         
@@ -13,7 +14,7 @@
 
         body {
             font-family: 'VT323', monospace;
-            font-size: 16px;
+            font-size: 20px;
             overflow: hidden;
             background: #008080;
         }
@@ -28,29 +29,32 @@
         }
 
         .title-bar {
-            height: 25px;
+            height: 35px;
             background: linear-gradient(to right, #1084d0, #70b7e3);
             color: white;
             display: flex;
             align-items: center;
-            padding: 0 8px;
+            padding: 0 12px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 18px;
         }
 
         .menu-bar {
-            height: 25px;
+            height: 35px;
             background: #c0c0c0;
             border-bottom: 1px solid #808080;
             display: flex;
             align-items: center;
+            overflow-x: auto;
         }
 
         .menu-item {
-            padding: 5px 15px;
+            padding: 8px 20px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 18px;
             border: 1px transparent solid;
+            white-space: nowrap;
+            min-width: fit-content;
         }
 
         .menu-item:hover {
@@ -66,7 +70,7 @@
         .content-area {
             flex: 1;
             background: white;
-            padding: 30px;
+            padding: 20px;
             overflow: auto;
             position: relative;
         }
@@ -87,38 +91,39 @@
 
         .home-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .name {
-            font-size: 48px;
+            font-size: 36px;
             color: #000080;
             text-shadow: 2px 2px 0px #808080;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .title {
-            font-size: 24px;
+            font-size: 20px;
             color: #008000;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            line-height: 1.4;
         }
 
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 800px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
         .nav-button {
             background: #c0c0c0;
             border: 2px outset #c0c0c0;
-            padding: 20px;
+            padding: 20px 15px;
             text-align: center;
             cursor: pointer;
             font-family: 'VT323', monospace;
-            font-size: 18px;
+            font-size: 16px;
             color: #000080;
             transition: all 0.1s;
         }
@@ -132,14 +137,14 @@
         }
 
         .nav-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
+            font-size: 28px;
+            margin-bottom: 8px;
             display: block;
         }
 
         .page-content h2 {
             color: #000080;
-            font-size: 32px;
+            font-size: 28px;
             margin-bottom: 20px;
             border-bottom: 2px solid #000080;
             padding-bottom: 10px;
@@ -147,28 +152,39 @@
 
         .page-content h3 {
             color: #008000;
-            font-size: 24px;
-            margin: 20px 0 10px 0;
+            font-size: 22px;
+            margin: 20px 0 15px 0;
         }
 
         .page-content p {
             font-size: 18px;
-            line-height: 1.4;
-            margin-bottom: 15px;
+            line-height: 1.6;
+            margin-bottom: 18px;
             color: #000;
+        }
+
+        .page-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .page-content li {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
             margin: 20px 0;
         }
 
         .skill-item {
             background: #008080;
             color: white;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             border: 1px solid #004040;
             font-size: 16px;
@@ -181,25 +197,106 @@
             margin: 20px 0;
         }
 
+        .contact-form {
+            background: #f0f0f0;
+            border: 1px inset #c0c0c0;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #000080;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            border: 1px inset #c0c0c0;
+            background: white;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            padding: 12px 20px;
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            color: #000080;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .submit-btn:active {
+            border: 2px inset #c0c0c0;
+        }
+
         .project-item {
             background: #f0f0f0;
             border: 1px outset #c0c0c0;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 20px;
+            margin: 20px 0;
         }
 
         .status-bar {
-            height: 20px;
+            height: 25px;
             background: #c0c0c0;
             border-top: 1px solid #808080;
             display: flex;
             align-items: center;
-            padding: 0 10px;
-            font-size: 12px;
+            padding: 0 12px;
+            font-size: 14px;
         }
 
         .clock {
             margin-left: auto;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 28px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+            
+            .content-area {
+                padding: 15px;
+            }
+            
+            .nav-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 12px;
+            }
+            
+            .menu-bar {
+                overflow-x: scroll;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            .menu-bar::-webkit-scrollbar {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -249,25 +346,33 @@
             <div id="about" class="page">
                 <div class="page-content">
                     <h2>ABOUT ME</h2>
-                    <p>Sveiki! Es esmu Arturs, datorzinatnes students ar aizraušanos par programmēšanu un jaunajām tehnoloģijām.</p>
+                    <p>My name is <strong>Arturs Lapiņš</strong>, and for as long as I can remember I have been fascinated by technology—especially computers, their structure, and the endless possibilities of what can be achieved with them. This curiosity started in childhood and grew stronger as I got older.</p>
                     
-                    <h3>SKILLS</h3>
+                    <p>When I was 14, I received my very first computer, and that moment marked the beginning of my journey into developing practical skills in the field. I started experimenting with different types of software, learning not only how programs work but also how to use them creatively.</p>
+                    
+                    <p>Over time, I designed logos for individual clients, which gave me valuable experience in working with real-world requests and improving my design sense. I also began exploring 3D modeling with <strong>Blender</strong>, experimenting with how to create models and bring ideas to life in a virtual environment.</p>
+                    
+                    <p>After finishing high school, I realized that I wanted to pursue my passion more seriously and turn it into a career. That led me to apply for the <strong>Computer Systems</strong> program at Riga Technical University's Liepāja branch. I am currently in my second year of studies, where I continue to deepen my knowledge in programming, system design, and various aspects of computer science.</p>
+                    
+                    <h3>TECHNICAL SKILLS</h3>
                     <div class="skills-grid">
-                        <div class="skill-item">JAVASCRIPT</div>
-                        <div class="skill-item">TYPESCRIPT</div>
-                        <div class="skill-item">REACT</div>
-                        <div class="skill-item">THREE.JS</div>
-                        <div class="skill-item">NODE.JS</div>
-                        <div class="skill-item">HTML/CSS</div>
-                        <div class="skill-item">GIT</div>
+                        <div class="skill-item">C / C++</div>
+                        <div class="skill-item">JAVA</div>
                         <div class="skill-item">PYTHON</div>
+                        <div class="skill-item">JAVASCRIPT</div>
+                        <div class="skill-item">HTML/CSS</div>
+                        <div class="skill-item">BLENDER</div>
+                        <div class="skill-item">PHOTOSHOP</div>
+                        <div class="skill-item">ILLUSTRATOR</div>
                     </div>
                     
-                    <h3>INTERESTS</h3>
-                    <p>• Web Development & 3D Graphics</p>
-                    <p>• Backend Development</p>
-                    <p>• Database Design</p>
-                    <p>• Mobile App Development</p>
+                    <h3>CREATIVE SKILLS</h3>
+                    <ul>
+                        <li>Logo and branding design</li>
+                        <li>3D modeling and visualization in Blender</li>
+                        <li>Visual storytelling and presentation</li>
+                        <li>Problem solving and debugging</li>
+                    </ul>
                 </div>
             </div>
 
@@ -276,15 +381,36 @@
                 <div class="page-content">
                     <h2>EXPERIENCE</h2>
                     
-                    <h3>EDUCATION</h3>
-                    <p><strong>Computer Science Student</strong> | 2023 - Present</p>
-                    <p>Studying computer science with focus on software development and modern technologies.</p>
+                    <div class="project-item">
+                        <h3>Freelance Logo Designer</h3>
+                        <ul>
+                            <li>Designed logos and branding materials for individual clients</li>
+                            <li>Communicated with clients to understand requirements and deliver customized solutions</li>
+                            <li>Improved design workflow using Adobe Illustrator, Photoshop, and GIMP</li>
+                        </ul>
+                    </div>
                     
-                    <h3>LEARNING PATH</h3>
-                    <p>• Frontend Development with React & TypeScript</p>
-                    <p>• 3D Web Development with Three.js</p>
-                    <p>• Backend API Development</p>
-                    <p>• Version Control with Git</p>
+                    <div class="project-item">
+                        <h3>3D Modeling Projects (Self-Initiated)</h3>
+                        <ul>
+                            <li>Learned and applied Blender for creating 3D models and visual concepts</li>
+                            <li>Experimented with different modeling techniques and rendering methods</li>
+                            <li>Built a portfolio of small creative projects</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h3>Computer Systems Practice (Personal Projects)</h3>
+                        <ul>
+                            <li>Built, configured, and maintained personal computers</li>
+                            <li>Explored software installation, troubleshooting, and optimization</li>
+                            <li>Developed interest in programming and system design through hands-on practice</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>EDUCATION</h3>
+                    <p><strong>Computer Systems Student</strong> | 2023 - Present</p>
+                    <p>Riga Technical University, Liepāja branch - Currently in second year, focusing on programming, system design, and computer science fundamentals.</p>
                 </div>
             </div>
 
@@ -295,20 +421,20 @@
                     
                     <div class="project-item">
                         <h3>3D Interactive Portfolio</h3>
-                        <p>Modern portfolio website built with Three.js, TypeScript, and React. Features immersive 3D environment with interactive elements.</p>
-                        <p><strong>Tech:</strong> Three.js, TypeScript, React, Webpack</p>
+                        <p>Modern portfolio website built with Three.js, TypeScript, and React. Features immersive 3D environment with interactive elements and custom OS interface.</p>
+                        <p><strong>Tech:</strong> Three.js, TypeScript, React, Webpack, Blender</p>
                     </div>
                     
                     <div class="project-item">
-                        <h3>Portfolio OS Interface</h3>
-                        <p>Retro-style operating system interface for portfolio presentation. Built with vanilla HTML, CSS, and JavaScript.</p>
-                        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                        <h3>Logo Design Portfolio</h3>
+                        <p>Collection of logos and branding materials created for various clients. Demonstrates proficiency in visual design and client communication.</p>
+                        <p><strong>Tech:</strong> Adobe Illustrator, Photoshop, GIMP</p>
                     </div>
                     
                     <div class="project-item">
-                        <h3>Web Applications</h3>
-                        <p>Various web applications and experiments built with modern web technologies.</p>
-                        <p><strong>Tech:</strong> React, Node.js, Express</p>
+                        <h3>3D Modeling Collection</h3>
+                        <p>Various 3D models and visualizations created as learning projects and creative experiments using Blender.</p>
+                        <p><strong>Tech:</strong> Blender, 3D Modeling, Rendering</p>
                     </div>
                 </div>
             </div>
@@ -320,14 +446,25 @@
                     
                     <div class="contact-info">
                         <h3>GET IN TOUCH</h3>
-                        <p><strong>Email:</strong> arturs@example.com</p>
-                        <p><strong>GitHub:</strong> github.com/arturs</p>
-                        <p><strong>LinkedIn:</strong> linkedin.com/in/arturs</p>
-                        <p><strong>Location:</strong> Rīga, Latvija</p>
+                        <p><strong>Email:</strong> arturss.lapins04@gmail.com</p>
+                        <p><strong>Location:</strong> Liepāja, Latvija</p>
+                        <p><strong>Studies:</strong> RTU Liepāja branch - Computer Systems</p>
                     </div>
                     
-                    <p>Interested in collaboration or have a project in mind? Feel free to reach out!</p>
-                    <p>I'm always open to discussing new opportunities and interesting projects.</p>
+                    <div class="contact-form">
+                        <h3>SEND MESSAGE</h3>
+                        <div class="form-group">
+                            <label for="email">Your Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project or just say hello..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" onclick="sendMessage()">SEND MESSAGE</button>
+                    </div>
+                    
+                    <p>Interested in collaboration or have a project in mind? Feel free to reach out! I'm always open to discussing new opportunities and interesting projects.</p>
                 </div>
             </div>
         </div>
@@ -340,21 +477,28 @@
 
     <script>
         function showPage(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             
-            // Remove active class from menu items
             document.querySelectorAll('.menu-item').forEach(item => {
                 item.classList.remove('active');
             });
             
-            // Show selected page
             document.getElementById(pageId).classList.add('active');
-            
-            // Activate corresponding menu item
             event.target.classList.add('active');
+        }
+
+        function sendMessage() {
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (email && message) {
+                const mailtoLink = `mailto:arturss.lapins04@gmail.com?subject=Portfolio Contact&body=From: ${email}%0D%0A%0D%0A${encodeURIComponent(message)}`;
+                window.location.href = mailtoLink;
+            } else {
+                alert('Please fill in both email and message fields.');
+            }
         }
 
         function updateClock() {
