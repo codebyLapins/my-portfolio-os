@@ -14,7 +14,7 @@
 
         body {
             font-family: 'VT323', monospace;
-            font-size: 28px;
+            font-size: 36px;
             overflow: hidden;
             background: #008080;
         }
@@ -29,18 +29,18 @@
         }
 
         .title-bar {
-            height: 45px;
+            height: 60px;
             background: linear-gradient(to right, #1084d0, #70b7e3);
             color: white;
             display: flex;
             align-items: center;
-            padding: 0 15px;
+            padding: 0 20px;
             font-weight: bold;
-            font-size: 24px;
+            font-size: 32px;
         }
 
         .menu-bar {
-            height: 50px;
+            height: 70px;
             background: #c0c0c0;
             border-bottom: 1px solid #808080;
             display: flex;
@@ -49,9 +49,9 @@
         }
 
         .menu-item {
-            padding: 12px 25px;
+            padding: 18px 35px;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 32px;
             border: 1px transparent solid;
             white-space: nowrap;
             min-width: fit-content;
@@ -70,7 +70,7 @@
         .content-area {
             flex: 1;
             background: white;
-            padding: 25px;
+            padding: 35px;
             overflow: auto;
             position: relative;
         }
@@ -91,28 +91,28 @@
 
         .home-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .name {
-            font-size: 48px;
+            font-size: 72px;
             color: #000080;
-            text-shadow: 2px 2px 0px #808080;
-            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px #808080;
+            margin-bottom: 25px;
             line-height: 1.2;
         }
 
         .title {
-            font-size: 28px;
+            font-size: 40px;
             color: #008000;
-            margin-bottom: 35px;
+            margin-bottom: 45px;
             line-height: 1.4;
         }
 
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
             max-width: 100%;
             margin: 0 auto;
         }
@@ -120,14 +120,14 @@
         .nav-button {
             background: #c0c0c0;
             border: 2px outset #c0c0c0;
-            padding: 30px 20px;
+            padding: 40px 25px;
             text-align: center;
             cursor: pointer;
             font-family: 'VT323', monospace;
-            font-size: 22px;
+            font-size: 28px;
             color: #000080;
             transition: all 0.1s;
-            min-height: 120px;
+            min-height: 150px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -143,58 +143,58 @@
         }
 
         .nav-icon {
-            font-size: 40px;
-            margin-bottom: 12px;
+            font-size: 56px;
+            margin-bottom: 15px;
             display: block;
         }
 
         .page-content h2 {
             color: #000080;
-            font-size: 36px;
-            margin-bottom: 25px;
-            border-bottom: 3px solid #000080;
-            padding-bottom: 15px;
+            font-size: 52px;
+            margin-bottom: 35px;
+            border-bottom: 4px solid #000080;
+            padding-bottom: 20px;
         }
 
         .page-content h3 {
             color: #008000;
-            font-size: 30px;
-            margin: 25px 0 20px 0;
+            font-size: 40px;
+            margin: 35px 0 25px 0;
         }
 
         .page-content p {
-            font-size: 24px;
+            font-size: 32px;
             line-height: 1.6;
-            margin-bottom: 22px;
+            margin-bottom: 28px;
             color: #000;
         }
 
         .page-content ul {
-            margin: 20px 0;
-            padding-left: 25px;
+            margin: 25px 0;
+            padding-left: 35px;
         }
 
         .page-content li {
-            font-size: 24px;
+            font-size: 32px;
             line-height: 1.6;
-            margin-bottom: 12px;
+            margin-bottom: 18px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 35px 0;
         }
 
         .skill-item {
             background: #008080;
             color: white;
-            padding: 18px 12px;
+            padding: 25px 15px;
             text-align: center;
             border: 1px solid #004040;
-            font-size: 20px;
-            min-height: 60px;
+            font-size: 26px;
+            min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -203,54 +203,54 @@
         .contact-info {
             background: #e0e0e0;
             border: 1px inset #c0c0c0;
-            padding: 25px;
-            margin: 25px 0;
+            padding: 35px;
+            margin: 35px 0;
         }
 
         .contact-form {
             background: #f0f0f0;
             border: 1px inset #c0c0c0;
-            padding: 25px;
-            margin: 25px 0;
+            padding: 35px;
+            margin: 35px 0;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             font-weight: bold;
             color: #000080;
-            font-size: 24px;
+            font-size: 32px;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
+            padding: 20px;
             font-family: 'VT323', monospace;
-            font-size: 22px;
+            font-size: 28px;
             border: 1px inset #c0c0c0;
             background: white;
-            min-height: 50px;
+            min-height: 65px;
         }
 
         .form-group textarea {
-            height: 120px;
+            height: 150px;
             resize: vertical;
         }
 
         .submit-btn {
             background: #c0c0c0;
             border: 2px outset #c0c0c0;
-            padding: 18px 25px;
+            padding: 22px 30px;
             font-family: 'VT323', monospace;
-            font-size: 24px;
+            font-size: 32px;
             color: #000080;
             cursor: pointer;
-            min-height: 60px;
+            min-height: 75px;
         }
 
         .submit-btn:hover {
@@ -264,18 +264,18 @@
         .project-item {
             background: #f0f0f0;
             border: 1px outset #c0c0c0;
-            padding: 25px;
-            margin: 25px 0;
+            padding: 35px;
+            margin: 35px 0;
         }
 
         .status-bar {
-            height: 35px;
+            height: 45px;
             background: #c0c0c0;
             border-top: 1px solid #808080;
             display: flex;
             align-items: center;
-            padding: 0 15px;
-            font-size: 20px;
+            padding: 0 20px;
+            font-size: 26px;
         }
 
         .clock {
@@ -285,46 +285,47 @@
         /* Mobile optimizations */
         @media (max-width: 768px) {
             body {
-                font-size: 30px;
-            }
-            
-            .name {
                 font-size: 42px;
             }
             
+            .name {
+                font-size: 64px;
+            }
+            
             .title {
-                font-size: 26px;
+                font-size: 38px;
             }
             
             .content-area {
-                padding: 20px;
+                padding: 25px;
             }
             
             .nav-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-                gap: 15px;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 18px;
             }
             
             .nav-button {
-                padding: 25px 15px;
-                font-size: 20px;
+                padding: 35px 20px;
+                font-size: 26px;
+                min-height: 140px;
             }
             
             .nav-icon {
-                font-size: 35px;
+                font-size: 48px;
             }
             
             .page-content h2 {
-                font-size: 32px;
+                font-size: 48px;
             }
             
             .page-content h3 {
-                font-size: 28px;
+                font-size: 38px;
             }
             
             .page-content p, 
             .page-content li {
-                font-size: 22px;
+                font-size: 30px;
             }
             
             .menu-bar {
@@ -338,40 +339,64 @@
             }
             
             .menu-item {
-                font-size: 22px;
-                padding: 10px 20px;
+                font-size: 30px;
+                padding: 15px 25px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+            
+            .skill-item {
+                font-size: 24px;
+                padding: 20px 12px;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                font-size: 32px;
+                font-size: 48px;
             }
             
             .name {
-                font-size: 38px;
+                font-size: 56px;
             }
             
             .title {
-                font-size: 24px;
+                font-size: 34px;
             }
             
             .nav-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                gap: 15px;
+            }
+            
+            .nav-button {
+                font-size: 24px;
+                min-height: 130px;
+                padding: 30px 15px;
+            }
+            
+            .nav-icon {
+                font-size: 42px;
             }
             
             .page-content h2 {
-                font-size: 30px;
+                font-size: 44px;
             }
             
             .page-content h3 {
-                font-size: 26px;
+                font-size: 36px;
             }
             
             .page-content p, 
             .page-content li {
-                font-size: 20px;
+                font-size: 28px;
+            }
+            
+            .menu-item {
+                font-size: 28px;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -452,24 +477,27 @@
                     <div class="project-item">
                         <h3>Freelance Logo Designer</h3>
                         <p>• Designed logos and branding materials for individual clients</p>
-                        <p>• Improved design workflow using Adobe Illustrator and Photoshop</p>
+                        <p>• Communicated with clients to understand requirements and deliver customized solutions</p>
+                        <p>• Improved design workflow using Adobe Illustrator, Photoshop, and GIMP</p>
                     </div>
                     
                     <div class="project-item">
-                        <h3>3D Modeling Projects</h3>
-                        <p>• Learned Blender for creating 3D models and visual concepts</p>
-                        <p>• Built a portfolio of creative projects</p>
+                        <h3>3D Modeling Projects (Self-Initiated)</h3>
+                        <p>• Learned and applied Blender for creating 3D models and visual concepts</p>
+                        <p>• Experimented with different modeling techniques and rendering methods</p>
+                        <p>• Built a portfolio of small creative projects</p>
                     </div>
                     
                     <div class="project-item">
-                        <h3>Computer Systems Practice</h3>
-                        <p>• Built and maintained personal computers</p>
-                        <p>• Developed programming and system design skills</p>
+                        <h3>Computer Systems Practice (Personal Projects)</h3>
+                        <p>• Built, configured, and maintained personal computers</p>
+                        <p>• Explored software installation, troubleshooting, and optimization</p>
+                        <p>• Developed interest in programming and system design through hands-on practice</p>
                     </div>
                     
                     <h3>EDUCATION</h3>
                     <p><strong>Computer Systems Student</strong> | 2023 - Present</p>
-                    <p>Riga Technical University, Liepāja branch</p>
+                    <p>Riga Technical University, Liepāja branch - Currently in second year, focusing on programming, system design, and computer science fundamentals.</p>
                 </div>
             </div>
 
@@ -480,20 +508,20 @@
                     
                     <div class="project-item">
                         <h3>3D Interactive Portfolio</h3>
-                        <p>Modern portfolio website with Three.js and React. Features immersive 3D environment with interactive elements.</p>
-                        <p><strong>Tech:</strong> Three.js, TypeScript, React, Blender</p>
+                        <p>Modern portfolio website built with Three.js, TypeScript, and React. Features immersive 3D environment with interactive elements and custom OS interface.</p>
+                        <p><strong>Tech:</strong> Three.js, TypeScript, React, Webpack, Blender</p>
                     </div>
                     
                     <div class="project-item">
                         <h3>Logo Design Portfolio</h3>
-                        <p>Collection of logos and branding materials created for various clients.</p>
-                        <p><strong>Tech:</strong> Adobe Illustrator, Photoshop</p>
+                        <p>Collection of logos and branding materials created for various clients. Demonstrates proficiency in visual design and client communication.</p>
+                        <p><strong>Tech:</strong> Adobe Illustrator, Photoshop, GIMP</p>
                     </div>
                     
                     <div class="project-item">
                         <h3>3D Modeling Collection</h3>
-                        <p>Various 3D models and visualizations created using Blender.</p>
-                        <p><strong>Tech:</strong> Blender, 3D Modeling</p>
+                        <p>Various 3D models and visualizations created as learning projects and creative experiments using Blender.</p>
+                        <p><strong>Tech:</strong> Blender, 3D Modeling, Rendering</p>
                     </div>
                 </div>
             </div>
@@ -522,6 +550,8 @@
                         </div>
                         <button type="submit" class="submit-btn" onclick="sendMessage()">SEND MESSAGE</button>
                     </div>
+                    
+                    <p>Interested in collaboration or have a project in mind? Feel free to reach out! I'm always open to discussing new opportunities and interesting projects.</p>
                 </div>
             </div>
         </div>
