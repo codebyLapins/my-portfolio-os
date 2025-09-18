@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Arturs Lapiņš - Portfolio OS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
         
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'VT323', monospace;
-            font-size: 20px;
+            font-size: 28px;
             overflow: hidden;
             background: #008080;
         }
@@ -29,18 +29,18 @@
         }
 
         .title-bar {
-            height: 35px;
+            height: 45px;
             background: linear-gradient(to right, #1084d0, #70b7e3);
             color: white;
             display: flex;
             align-items: center;
-            padding: 0 12px;
+            padding: 0 15px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 24px;
         }
 
         .menu-bar {
-            height: 35px;
+            height: 50px;
             background: #c0c0c0;
             border-bottom: 1px solid #808080;
             display: flex;
@@ -49,9 +49,9 @@
         }
 
         .menu-item {
-            padding: 8px 20px;
+            padding: 12px 25px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 24px;
             border: 1px transparent solid;
             white-space: nowrap;
             min-width: fit-content;
@@ -70,7 +70,7 @@
         .content-area {
             flex: 1;
             background: white;
-            padding: 20px;
+            padding: 25px;
             overflow: auto;
             position: relative;
         }
@@ -91,27 +91,28 @@
 
         .home-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .name {
-            font-size: 36px;
+            font-size: 48px;
             color: #000080;
             text-shadow: 2px 2px 0px #808080;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .title {
-            font-size: 20px;
+            font-size: 28px;
             color: #008000;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             line-height: 1.4;
         }
 
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             max-width: 100%;
             margin: 0 auto;
         }
@@ -119,13 +120,18 @@
         .nav-button {
             background: #c0c0c0;
             border: 2px outset #c0c0c0;
-            padding: 20px 15px;
+            padding: 30px 20px;
             text-align: center;
             cursor: pointer;
             font-family: 'VT323', monospace;
-            font-size: 16px;
+            font-size: 22px;
             color: #000080;
             transition: all 0.1s;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .nav-button:hover {
@@ -137,107 +143,114 @@
         }
 
         .nav-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 40px;
+            margin-bottom: 12px;
             display: block;
         }
 
         .page-content h2 {
             color: #000080;
-            font-size: 28px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #000080;
-            padding-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #000080;
+            padding-bottom: 15px;
         }
 
         .page-content h3 {
             color: #008000;
-            font-size: 22px;
-            margin: 20px 0 15px 0;
+            font-size: 30px;
+            margin: 25px 0 20px 0;
         }
 
         .page-content p {
-            font-size: 18px;
+            font-size: 24px;
             line-height: 1.6;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             color: #000;
         }
 
         .page-content ul {
-            margin: 15px 0;
-            padding-left: 20px;
+            margin: 20px 0;
+            padding-left: 25px;
         }
 
         .page-content li {
-            font-size: 18px;
+            font-size: 24px;
             line-height: 1.6;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
         }
 
         .skill-item {
             background: #008080;
             color: white;
-            padding: 12px;
+            padding: 18px 12px;
             text-align: center;
             border: 1px solid #004040;
-            font-size: 16px;
+            font-size: 20px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .contact-info {
             background: #e0e0e0;
             border: 1px inset #c0c0c0;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 25px;
+            margin: 25px 0;
         }
 
         .contact-form {
             background: #f0f0f0;
             border: 1px inset #c0c0c0;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 25px;
+            margin: 25px 0;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: bold;
             color: #000080;
+            font-size: 24px;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             font-family: 'VT323', monospace;
-            font-size: 16px;
+            font-size: 22px;
             border: 1px inset #c0c0c0;
             background: white;
+            min-height: 50px;
         }
 
         .form-group textarea {
-            height: 100px;
+            height: 120px;
             resize: vertical;
         }
 
         .submit-btn {
             background: #c0c0c0;
             border: 2px outset #c0c0c0;
-            padding: 12px 20px;
+            padding: 18px 25px;
             font-family: 'VT323', monospace;
-            font-size: 18px;
+            font-size: 24px;
             color: #000080;
             cursor: pointer;
+            min-height: 60px;
         }
 
         .submit-btn:hover {
@@ -251,18 +264,18 @@
         .project-item {
             background: #f0f0f0;
             border: 1px outset #c0c0c0;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 25px;
+            margin: 25px 0;
         }
 
         .status-bar {
-            height: 25px;
+            height: 35px;
             background: #c0c0c0;
             border-top: 1px solid #808080;
             display: flex;
             align-items: center;
-            padding: 0 12px;
-            font-size: 14px;
+            padding: 0 15px;
+            font-size: 20px;
         }
 
         .clock {
@@ -271,21 +284,47 @@
 
         /* Mobile optimizations */
         @media (max-width: 768px) {
+            body {
+                font-size: 30px;
+            }
+            
             .name {
-                font-size: 28px;
+                font-size: 42px;
             }
             
             .title {
-                font-size: 18px;
+                font-size: 26px;
             }
             
             .content-area {
-                padding: 15px;
+                padding: 20px;
             }
             
             .nav-grid {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-                gap: 12px;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 15px;
+            }
+            
+            .nav-button {
+                padding: 25px 15px;
+                font-size: 20px;
+            }
+            
+            .nav-icon {
+                font-size: 35px;
+            }
+            
+            .page-content h2 {
+                font-size: 32px;
+            }
+            
+            .page-content h3 {
+                font-size: 28px;
+            }
+            
+            .page-content p, 
+            .page-content li {
+                font-size: 22px;
             }
             
             .menu-bar {
@@ -296,6 +335,43 @@
             
             .menu-bar::-webkit-scrollbar {
                 display: none;
+            }
+            
+            .menu-item {
+                font-size: 22px;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 32px;
+            }
+            
+            .name {
+                font-size: 38px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            
+            .page-content h2 {
+                font-size: 30px;
+            }
+            
+            .page-content h3 {
+                font-size: 26px;
+            }
+            
+            .page-content p, 
+            .page-content li {
+                font-size: 20px;
             }
         }
     </style>
@@ -346,13 +422,13 @@
             <div id="about" class="page">
                 <div class="page-content">
                     <h2>ABOUT ME</h2>
-                    <p>My name is <strong>Arturs Lapiņš</strong>, and for as long as I can remember I have been fascinated by technology—especially computers, their structure, and the endless possibilities of what can be achieved with them. This curiosity started in childhood and grew stronger as I got older.</p>
+                    <p>My name is <strong>Arturs Lapiņš</strong>, and for as long as I can remember I have been fascinated by technology—especially computers, their structure, and the endless possibilities of what can be achieved with them.</p>
                     
-                    <p>When I was 14, I received my very first computer, and that moment marked the beginning of my journey into developing practical skills in the field. I started experimenting with different types of software, learning not only how programs work but also how to use them creatively.</p>
+                    <p>When I was 14, I received my very first computer, and that moment marked the beginning of my journey into developing practical skills in the field.</p>
                     
-                    <p>Over time, I designed logos for individual clients, which gave me valuable experience in working with real-world requests and improving my design sense. I also began exploring 3D modeling with <strong>Blender</strong>, experimenting with how to create models and bring ideas to life in a virtual environment.</p>
+                    <p>Over time, I designed logos for individual clients and began exploring 3D modeling with <strong>Blender</strong>, experimenting with how to create models and bring ideas to life in a virtual environment.</p>
                     
-                    <p>After finishing high school, I realized that I wanted to pursue my passion more seriously and turn it into a career. That led me to apply for the <strong>Computer Systems</strong> program at Riga Technical University's Liepāja branch. I am currently in my second year of studies, where I continue to deepen my knowledge in programming, system design, and various aspects of computer science.</p>
+                    <p>I am currently studying <strong>Computer Systems</strong> at Riga Technical University's Liepāja branch, where I continue to deepen my knowledge in programming and system design.</p>
                     
                     <h3>TECHNICAL SKILLS</h3>
                     <div class="skills-grid">
@@ -365,14 +441,6 @@
                         <div class="skill-item">PHOTOSHOP</div>
                         <div class="skill-item">ILLUSTRATOR</div>
                     </div>
-                    
-                    <h3>CREATIVE SKILLS</h3>
-                    <ul>
-                        <li>Logo and branding design</li>
-                        <li>3D modeling and visualization in Blender</li>
-                        <li>Visual storytelling and presentation</li>
-                        <li>Problem solving and debugging</li>
-                    </ul>
                 </div>
             </div>
 
@@ -383,34 +451,25 @@
                     
                     <div class="project-item">
                         <h3>Freelance Logo Designer</h3>
-                        <ul>
-                            <li>Designed logos and branding materials for individual clients</li>
-                            <li>Communicated with clients to understand requirements and deliver customized solutions</li>
-                            <li>Improved design workflow using Adobe Illustrator, Photoshop, and GIMP</li>
-                        </ul>
+                        <p>• Designed logos and branding materials for individual clients</p>
+                        <p>• Improved design workflow using Adobe Illustrator and Photoshop</p>
                     </div>
                     
                     <div class="project-item">
-                        <h3>3D Modeling Projects (Self-Initiated)</h3>
-                        <ul>
-                            <li>Learned and applied Blender for creating 3D models and visual concepts</li>
-                            <li>Experimented with different modeling techniques and rendering methods</li>
-                            <li>Built a portfolio of small creative projects</li>
-                        </ul>
+                        <h3>3D Modeling Projects</h3>
+                        <p>• Learned Blender for creating 3D models and visual concepts</p>
+                        <p>• Built a portfolio of creative projects</p>
                     </div>
                     
                     <div class="project-item">
-                        <h3>Computer Systems Practice (Personal Projects)</h3>
-                        <ul>
-                            <li>Built, configured, and maintained personal computers</li>
-                            <li>Explored software installation, troubleshooting, and optimization</li>
-                            <li>Developed interest in programming and system design through hands-on practice</li>
-                        </ul>
+                        <h3>Computer Systems Practice</h3>
+                        <p>• Built and maintained personal computers</p>
+                        <p>• Developed programming and system design skills</p>
                     </div>
                     
                     <h3>EDUCATION</h3>
                     <p><strong>Computer Systems Student</strong> | 2023 - Present</p>
-                    <p>Riga Technical University, Liepāja branch - Currently in second year, focusing on programming, system design, and computer science fundamentals.</p>
+                    <p>Riga Technical University, Liepāja branch</p>
                 </div>
             </div>
 
@@ -421,20 +480,20 @@
                     
                     <div class="project-item">
                         <h3>3D Interactive Portfolio</h3>
-                        <p>Modern portfolio website built with Three.js, TypeScript, and React. Features immersive 3D environment with interactive elements and custom OS interface.</p>
-                        <p><strong>Tech:</strong> Three.js, TypeScript, React, Webpack, Blender</p>
+                        <p>Modern portfolio website with Three.js and React. Features immersive 3D environment with interactive elements.</p>
+                        <p><strong>Tech:</strong> Three.js, TypeScript, React, Blender</p>
                     </div>
                     
                     <div class="project-item">
                         <h3>Logo Design Portfolio</h3>
-                        <p>Collection of logos and branding materials created for various clients. Demonstrates proficiency in visual design and client communication.</p>
-                        <p><strong>Tech:</strong> Adobe Illustrator, Photoshop, GIMP</p>
+                        <p>Collection of logos and branding materials created for various clients.</p>
+                        <p><strong>Tech:</strong> Adobe Illustrator, Photoshop</p>
                     </div>
                     
                     <div class="project-item">
                         <h3>3D Modeling Collection</h3>
-                        <p>Various 3D models and visualizations created as learning projects and creative experiments using Blender.</p>
-                        <p><strong>Tech:</strong> Blender, 3D Modeling, Rendering</p>
+                        <p>Various 3D models and visualizations created using Blender.</p>
+                        <p><strong>Tech:</strong> Blender, 3D Modeling</p>
                     </div>
                 </div>
             </div>
@@ -448,7 +507,7 @@
                         <h3>GET IN TOUCH</h3>
                         <p><strong>Email:</strong> arturss.lapins04@gmail.com</p>
                         <p><strong>Location:</strong> Liepāja, Latvija</p>
-                        <p><strong>Studies:</strong> RTU Liepāja branch - Computer Systems</p>
+                        <p><strong>Studies:</strong> RTU Liepāja - Computer Systems</p>
                     </div>
                     
                     <div class="contact-form">
@@ -459,12 +518,10 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message:</label>
-                            <textarea id="message" name="message" required placeholder="Tell me about your project or just say hello..."></textarea>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn" onclick="sendMessage()">SEND MESSAGE</button>
                     </div>
-                    
-                    <p>Interested in collaboration or have a project in mind? Feel free to reach out! I'm always open to discussing new opportunities and interesting projects.</p>
                 </div>
             </div>
         </div>
