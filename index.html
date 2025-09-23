@@ -529,15 +529,17 @@
                     
                     <div class="contact-form">
                         <h3>SEND MESSAGE</h3>
-                        <div class="form-group">
-                            <label for="email">Your Email:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn" onclick="sendMessage()">SEND MESSAGE</button>
+                        <form action="https://formspree.io/f/mzzjbgpo" method="POST">
+                            <div class="form-group">
+                                <label for="email">Your Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                        </form>
                     </div>
                     
                     <p>Interested in collaboration or have a project in mind? Feel free to reach out! I'm always open to discussing new opportunities and interesting projects.</p>
@@ -562,18 +564,6 @@
             
             document.getElementById(pageId).classList.add('active');
             event.target.classList.add('active');
-        }
-
-        function sendMessage() {
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (email && message) {
-                const mailtoLink = `mailto:arturs@codebylapins.com?subject=Portfolio Contact&body=From: ${email}%0D%0A%0D%0A${encodeURIComponent(message)}`;
-                window.location.href = mailtoLink;
-            } else {
-                alert('Please fill in both email and message fields.');
-            }
         }
 
         function updateClock() {
