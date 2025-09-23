@@ -529,17 +529,15 @@
                     
                     <div class="contact-form">
                         <h3>SEND MESSAGE</h3>
-                        <form action="https://formspree.io/f/mzzjbgpo" method="POST">
-                            <div class="form-group">
-                                <label for="email">Your Email:</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message:</label>
-                                <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn">SEND MESSAGE</button>
-                        </form>
+                        <div class="form-group">
+                            <label for="email">Your Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" onclick="sendMessage()">SEND MESSAGE</button>
                     </div>
                     
                     <p>Interested in collaboration or have a project in mind? Feel free to reach out! I'm always open to discussing new opportunities and interesting projects.</p>
@@ -552,7 +550,13 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
+        // Initialize EmailJS
+        (function(){
+            emailjs.init("O6rCnAM1omC4ZI_Fr");
+        })();
+
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -564,6 +568,30 @@
             
             document.getElementById(pageId).classList.add('active');
             event.target.classList.add('active');
+        }
+
+        function sendMessage() {
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (email && message) {
+                // EmailJS send
+                emailjs.send("service_ylagbep", "template_z4rwbmk", {
+                    from_email: email,
+                    message: message,
+                    to_email: "arturs@codebylapins.com"
+                })
+                .then(function(response) {
+                    alert('Message sent successfully!');
+                    document.getElementById('email').value = '';
+                    document.getElementById('message').value = '';
+                }, function(error) {
+                    alert('Failed to send message. Please try again.');
+                    console.log('EmailJS error:', error);
+                });
+            } else {
+                alert('Please fill in both email and message fields.');
+            }
         }
 
         function updateClock() {
