@@ -281,150 +281,6 @@
             margin-left: auto;
         }
 
-        /* Game Modal Styles */
-        .game-modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .game-window {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            max-width: 90vw;
-            background: #c0c0c0;
-            border: 2px outset #c0c0c0;
-            font-family: 'VT323', monospace;
-        }
-
-        .game-title-bar {
-            height: 50px;
-            background: linear-gradient(to right, #1084d0, #70b7e3);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 15px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .game-close-btn {
-            background: #c0c0c0;
-            border: 1px outset #c0c0c0;
-            color: #000;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-family: 'VT323', monospace;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .game-close-btn:hover {
-            background: #d0d0d0;
-        }
-
-        .game-close-btn:active {
-            border: 1px inset #c0c0c0;
-        }
-
-        .game-content {
-            padding: 20px;
-            background: white;
-            text-align: center;
-        }
-
-        .game-ui {
-            display: flex;
-            justify-content: space-between;
-            width: 400px;
-            margin: 0 auto 15px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .game-score {
-            color: #008000;
-        }
-
-        .game-level {
-            color: #800080;
-        }
-
-        .game-canvas {
-            background: #000080;
-            border: 2px inset #c0c0c0;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .game-over-screen {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #c0c0c0;
-            border: 2px outset #c0c0c0;
-            padding: 30px;
-            text-align: center;
-            display: none;
-        }
-
-        .game-over-title {
-            color: #800000;
-            margin: 0 0 15px 0;
-            font-size: 36px;
-        }
-
-        .final-score {
-            color: #008000;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .game-button {
-            background: #c0c0c0;
-            border: 2px outset #c0c0c0;
-            padding: 10px 20px;
-            font-family: 'VT323', monospace;
-            font-size: 24px;
-            color: #000080;
-            cursor: pointer;
-        }
-
-        .game-button:hover {
-            background: #d0d0d0;
-        }
-
-        .game-button:active {
-            border: 2px inset #c0c0c0;
-        }
-
-        .game-instructions {
-            margin-top: 15px;
-            color: #000080;
-            font-size: 18px;
-        }
-
-        .key-display {
-            background: #000080;
-            color: white;
-            padding: 2px 6px;
-            border: 1px outset #c0c0c0;
-            font-family: 'VT323', monospace;
-        }
-
         /* Mobile optimizations */
         @media (max-width: 768px) {
             body {
@@ -484,16 +340,6 @@
                 font-size: 24px;
                 padding: 20px 12px;
             }
-
-            .game-window {
-                width: 95vw;
-                height: 95vh;
-            }
-
-            .game-canvas {
-                width: 320px;
-                height: 480px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -551,12 +397,11 @@
         </div>
         
         <div class="menu-bar">
-            <div class="menu-item active" onclick="showPage('home')">HOME</div>
-            <div class="menu-item" onclick="showPage('about')">ABOUT</div>
-            <div class="menu-item" onclick="showPage('experience')">EXPERIENCE</div>
-            <div class="menu-item" onclick="showPage('projects')">PROJECTS</div>
-            <div class="menu-item" onclick="showPage('games')">GAMES</div>
-            <div class="menu-item" onclick="showPage('contact')">CONTACT</div>
+            <div class="menu-item active" onclick="showPage('home', event)">HOME</div>
+            <div class="menu-item" onclick="showPage('about', event)">ABOUT</div>
+            <div class="menu-item" onclick="showPage('experience', event)">EXPERIENCE</div>
+            <div class="menu-item" onclick="showPage('projects', event)">PROJECTS</div>
+            <div class="menu-item" onclick="showPage('contact', event)">CONTACT</div>
         </div>
 
         <div class="content-area">
@@ -568,26 +413,31 @@
                 </div>
                 
                 <div class="nav-grid">
-                    <div class="nav-button" onclick="showPage('about')">
+                    <div class="nav-button" onclick="showPage('about', event)">
                         <span class="nav-icon">👨‍💻</span>
                         ABOUT ME
                     </div>
-                    <div class="nav-button" onclick="showPage('experience')">
+                    <div class="nav-button" onclick="showPage('experience', event)">
                         <span class="nav-icon">🎓</span>
                         EXPERIENCE
                     </div>
-                    <div class="nav-button" onclick="showPage('projects')">
+                    <div class="nav-button" onclick="showPage('projects', event)">
                         <span class="nav-icon">💻</span>
                         PROJECTS
                     </div>
-                    <div class="nav-button" onclick="showPage('games')">
-                        <span class="nav-icon">🎮</span>
-                        GAMES
-                    </div>
-                    <div class="nav-button" onclick="showPage('contact')">
+                    <div class="nav-button" onclick="showPage('contact', event)">
                         <span class="nav-icon">📧</span>
                         CONTACT
                     </div>
+                </div>
+                <!-- Falling Blocks Survival Game -->
+                <div style="margin-top: 60px; text-align: center;">
+                  <div id="falling-blocks-score" style="color: #000080; font-size: 32px; margin-bottom:8px;">Score: 0</div>
+                  <canvas id="falling-blocks-canvas" width="400" height="450" style="background:#2e4053; border-radius:7px; margin-bottom:8px;"></canvas>
+                  <div id="falling-blocks-gameover" style="display:none; color: #e05353; font-size: 34px; margin:14px;">
+                    Game Over!<br>
+                    <button onclick="fallingBlocksRestart()" style="font-size:24px;padding:10px 24px;border-radius:5px;margin-top:10px;border:none;background:#008080;color:#fff;">Restart</button>
+                  </div>
                 </div>
             </div>
 
@@ -671,46 +521,6 @@
                         <p>Various 3D models and visualizations created as learning projects and creative experiments using Blender.</p>
                         <p><strong>Tech:</strong> Blender, 3D Modeling, Rendering</p>
                     </div>
-                    
-                    <div class="project-item">
-                        <h3>Retro Games Collection</h3>
-                        <p>Classic-style browser games built with vanilla JavaScript and HTML5 Canvas. Features retro aesthetics and engaging gameplay mechanics.</p>
-                        <p><strong>Tech:</strong> JavaScript, HTML5 Canvas, CSS</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GAMES PAGE -->
-            <div id="games" class="page">
-                <div class="page-content">
-                    <h2>GAMES</h2>
-                    <p>Collection of retro-style browser games I've developed. Click on a game to play!</p>
-                    
-                    <div class="nav-grid">
-                        <div class="nav-button" onclick="openGame('falling-blocks')">
-                            <span class="nav-icon">🟦</span>
-                            FALLING BLOCKS
-                        </div>
-                        <div class="nav-button" style="opacity: 0.5;">
-                            <span class="nav-icon">🕹️</span>
-                            COMING SOON
-                        </div>
-                        <div class="nav-button" style="opacity: 0.5;">
-                            <span class="nav-icon">🎯</span>
-                            COMING SOON
-                        </div>
-                        <div class="nav-button" style="opacity: 0.5;">
-                            <span class="nav-icon">🚀</span>
-                            COMING SOON
-                        </div>
-                    </div>
-                    
-                    <div class="project-item">
-                        <h3>Falling Blocks Survival</h3>
-                        <p>Fast-paced arcade game where you dodge falling blocks. Features progressive difficulty, particle effects, and retro-style graphics.</p>
-                        <p><strong>Controls:</strong> Use left and right arrow keys to move your player and survive as long as possible!</p>
-                        <p><strong>Features:</strong> Progressive difficulty, score tracking, particle effects, responsive controls</p>
-                    </div>
                 </div>
             </div>
 
@@ -749,34 +559,6 @@
         </div>
     </div>
 
-    <!-- Game Modal -->
-    <div id="gameModal" class="game-modal">
-        <div class="game-window">
-            <div class="game-title-bar">
-                <span>Falling Blocks Survival</span>
-                <div class="game-close-btn" onclick="closeGame()">X</div>
-            </div>
-            <div class="game-content">
-                <div class="game-ui">
-                    <div id="gameScore" class="game-score">Score: 0</div>
-                    <div id="gameLevel" class="game-level">Level: 1</div>
-                </div>
-                
-                <canvas id="gameCanvas" class="game-canvas" width="400" height="600"></canvas>
-                
-                <div id="gameOver" class="game-over-screen">
-                    <h2 class="game-over-title">GAME OVER</h2>
-                    <div id="finalScore" class="final-score">Final Score: 0</div>
-                    <button onclick="restartGame()" class="game-button">PLAY AGAIN</button>
-                </div>
-                
-                <div class="game-instructions">
-                    Use <span class="key-display">←</span> and <span class="key-display">→</span> keys to move
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Initialize EmailJS
@@ -784,23 +566,20 @@
             emailjs.init("O6rCnAM1omC4ZI_Fr");
         })();
 
-        function showPage(pageId) {
+        function showPage(pageId, event) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-            
             document.querySelectorAll('.menu-item').forEach(item => {
                 item.classList.remove('active');
             });
-            
             document.getElementById(pageId).classList.add('active');
-            event.target.classList.add('active');
+            if (event && event.target) event.target.classList.add('active');
         }
 
         function sendMessage() {
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            
             if (email && message) {
                 // EmailJS send
                 emailjs.send("service_ylagbep", "template_z4rwbmk", {
@@ -829,254 +608,87 @@
 
         setInterval(updateClock, 1000);
         updateClock();
-
-        // Game Variables
-        let gameCanvas, gameCtx, gameState, gameAnimationId;
-        let gameKeyDownHandler, gameKeyUpHandler;
-
-        function openGame(gameName) {
-            if (gameName === 'falling-blocks') {
-                document.getElementById('gameModal').style.display = 'block';
-                initFallingBlocksGame();
-            }
+    </script>
+    <!-- FALLING BLOCKS SURVIVAL GAME SCRIPT -->
+    <script>
+    (function(){
+      const canvas = document.getElementById('falling-blocks-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const scoreDiv = document.getElementById('falling-blocks-score');
+      const gameoverDiv = document.getElementById('falling-blocks-gameover');
+      const playerWidth = 60, playerHeight = 18;
+      let playerX = (canvas.width-playerWidth)/2;
+      const playerY = canvas.height - playerHeight - 6;
+      let leftArrow = false, rightArrow = false;
+      let blocks = [];
+      let speed = 2.3;
+      let score = 0;
+      let gameover = false;
+      function drawPlayer() {
+        ctx.fillStyle = '#00fa81';
+        ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+      }
+      function drawBlocks() {
+        ctx.fillStyle = '#ff4747';
+        for (let b of blocks) ctx.fillRect(b.x, b.y, b.size, b.size);
+      }
+      function updateBlocks() {
+        for (let b of blocks) b.y += b.speed;
+        while (blocks.length && blocks[0].y > canvas.height) {
+          blocks.shift();
+          score++;
+          scoreDiv.innerText = "Score: " + score;
+          spawnBlock();
+          if (score % 6 === 0) speed += 0.4;
         }
-
-        function closeGame() {
-            document.getElementById('gameModal').style.display = 'none';
-            if (gameAnimationId) {
-                cancelAnimationFrame(gameAnimationId);
-            }
-            
-            // Remove event listeners
-            if (gameKeyDownHandler) {
-                document.removeEventListener('keydown', gameKeyDownHandler);
-            }
-            if (gameKeyUpHandler) {
-                document.removeEventListener('keyup', gameKeyUpHandler);
-            }
+      }
+      function spawnBlock() {
+        const blockSize = 40;
+        const x = Math.random() * (canvas.width-blockSize);
+        blocks.push({x, y: -blockSize, size:blockSize, speed:speed});
+      }
+      function detectCollisions() {
+        for (let b of blocks) {
+          if (
+            b.y + b.size > playerY &&
+            b.y < playerY + playerHeight &&
+            b.x < playerX + playerWidth &&
+            b.x + b.size > playerX
+          ) {
+            gameover = true;
+            gameoverDiv.style.display = 'block';
+          }
         }
-
-        function initFallingBlocksGame() {
-            gameCanvas = document.getElementById('gameCanvas');
-            gameCtx = gameCanvas.getContext('2d');
-            
-            gameState = {
-                player: {
-                    x: (gameCanvas.width - 30) / 2,
-                    y: gameCanvas.height - 30,
-                    width: 30,
-                    height: 10,
-                    speed: 7
-                },
-                blocks: [],
-                score: 0,
-                level: 1,
-                blockSpeed: 2,
-                blockSpawnRate: 0.02,
-                gameActive: true,
-                keys: {
-                    left: false,
-                    right: false
-                },
-                particles: []
-            };
-            
-            initGame();
-            gameLoop();
-        }
-
-        function initGame() {
-            gameState.player.x = (gameCanvas.width - gameState.player.width) / 2;
-            gameState.blocks = [];
-            gameState.score = 0;
-            gameState.level = 1;
-            gameState.blockSpeed = 2;
-            gameState.blockSpawnRate = 0.02;
-            gameState.gameActive = true;
-            gameState.keys.left = false;
-            gameState.keys.right = false;
-            gameState.particles = [];
-            
-            updateGameUI();
-            document.getElementById('gameOver').style.display = 'none';
-            
-            spawnBlock();
-            
-            // Add event listeners
-            gameKeyDownHandler = (e) => {
-                switch(e.code) {
-                    case 'ArrowLeft':
-                        e.preventDefault();
-                        gameState.keys.left = true;
-                        break;
-                    case 'ArrowRight':
-                        e.preventDefault();
-                        gameState.keys.right = true;
-                        break;
-                }
-            };
-            
-            gameKeyUpHandler = (e) => {
-                switch(e.code) {
-                    case 'ArrowLeft':
-                        gameState.keys.left = false;
-                        break;
-                    case 'ArrowRight':
-                        gameState.keys.right = false;
-                        break;
-                }
-            };
-            
-            document.addEventListener('keydown', gameKeyDownHandler);
-            document.addEventListener('keyup', gameKeyUpHandler);
-        }
-
-        function spawnBlock() {
-            const blockSize = 30 + Math.random() * 20;
-            const x = Math.random() * (gameCanvas.width - blockSize);
-            const colors = ['#800000', '#008000', '#000080', '#800080'];
-            
-            gameState.blocks.push({
-                x: x,
-                y: -blockSize,
-                size: blockSize,
-                speed: gameState.blockSpeed + Math.random() * 2,
-                color: colors[Math.floor(Math.random() * colors.length)]
-            });
-        }
-
-        function updateGame() {
-            if (!gameState.gameActive) return;
-            
-            // Move player
-            if (gameState.keys.left && gameState.player.x > 0) {
-                gameState.player.x -= gameState.player.speed;
-            }
-            if (gameState.keys.right && gameState.player.x < gameCanvas.width - gameState.player.width) {
-                gameState.player.x += gameState.player.speed;
-            }
-            
-            // Update blocks
-            for (let i = gameState.blocks.length - 1; i >= 0; i--) {
-                const block = gameState.blocks[i];
-                block.y += block.speed;
-                
-                if (block.y > gameCanvas.height) {
-                    gameState.blocks.splice(i, 1);
-                    gameState.score += 10;
-                    
-                    const newLevel = Math.floor(gameState.score / 100) + 1;
-                    if (newLevel > gameState.level) {
-                        gameState.level = newLevel;
-                        gameState.blockSpeed += 0.5;
-                        gameState.blockSpawnRate += 0.005;
-                    }
-                    
-                    updateGameUI();
-                }
-                else if (checkCollision(gameState.player, block)) {
-                    endGame();
-                    return;
-                }
-            }
-            
-            // Spawn new blocks
-            if (Math.random() < gameState.blockSpawnRate) {
-                spawnBlock();
-            }
-            
-            // Update particles
-            updateParticles();
-        }
-
-        function checkCollision(player, block) {
-            return player.x < block.x + block.size &&
-                   player.x + player.width > block.x &&
-                   player.y < block.y + block.size &&
-                   player.y + player.height > block.y;
-        }
-
-        function renderGame() {
-            gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
-            
-            // Draw player
-            gameCtx.fillStyle = '#00ff00';
-            gameCtx.fillRect(gameState.player.x, gameState.player.y, gameState.player.width, gameState.player.height);
-            
-            // Draw blocks
-            gameState.blocks.forEach(block => {
-                gameCtx.fillStyle = block.color;
-                gameCtx.fillRect(block.x, block.y, block.size, block.size);
-            });
-            
-            // Draw particles
-            drawParticles();
-        }
-
-        function updateParticles() {
-            if (Math.random() < 0.1) {
-                gameState.particles.push({
-                    x: Math.random() * gameCanvas.width,
-                    y: gameCanvas.height,
-                    vx: (Math.random() - 0.5) * 2,
-                    vy: -Math.random() * 3 - 1,
-                    life: 60,
-                    maxLife: 60
-                });
-            }
-            
-            for (let i = gameState.particles.length - 1; i >= 0; i--) {
-                const p = gameState.particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-                p.life--;
-                
-                if (p.life <= 0) {
-                    gameState.particles.splice(i, 1);
-                }
-            }
-        }
-
-        function drawParticles() {
-            gameState.particles.forEach(p => {
-                const alpha = p.life / p.maxLife;
-                gameCtx.globalAlpha = alpha * 0.3;
-                gameCtx.fillStyle = '#00ff00';
-                gameCtx.fillRect(p.x, p.y, 2, 2);
-            });
-            
-            gameCtx.globalAlpha = 1;
-        }
-
-        function updateGameUI() {
-            document.getElementById('gameScore').textContent = `Score: ${gameState.score}`;
-            document.getElementById('gameLevel').textContent = `Level: ${gameState.level}`;
-        }
-
-        function endGame() {
-            gameState.gameActive = false;
-            document.getElementById('finalScore').textContent = `Final Score: ${gameState.score}`;
-            document.getElementById('gameOver').style.display = 'block';
-        }
-
-        function restartGame() {
-            document.getElementById('gameOver').style.display = 'none';
-            initGame();
-        }
-
-        function gameLoop() {
-            updateGame();
-            renderGame();
-            
-            if (gameState.gameActive) {
-                gameAnimationId = requestAnimationFrame(gameLoop);
-            }
-        }
-
-        // Close game modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('gameModal');
-            if (event.target === modal) {
-                closeGame();
-            }
-        }
+      }
+      function loop() {
+        if (gameover) return;
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        if (leftArrow && playerX > 0) playerX -= 6;
+        if (rightArrow && playerX < canvas.width-playerWidth) playerX += 6;
+        drawPlayer(); drawBlocks(); updateBlocks(); detectCollisions();
+        requestAnimationFrame(loop);
+      }
+      function fallingBlocksRestart() {
+        blocks = [];
+        playerX = (canvas.width-playerWidth)/2;
+        speed = 2.3; score = 0; gameover = false;
+        gameoverDiv.style.display = "none";
+        scoreDiv.innerText = "Score: 0";
+        spawnBlock();
+        requestAnimationFrame(loop);
+      }
+      window.fallingBlocksRestart = fallingBlocksRestart;
+      document.addEventListener('keydown', function(e){
+        if (e.code==='ArrowLeft') leftArrow=true;
+        if (e.code==='ArrowRight') rightArrow=true;
+      });
+      document.addEventListener('keyup', function(e){
+        if (e.code==='ArrowLeft') leftArrow=false;
+        if (e.code==='ArrowRight') rightArrow=false;
+      });
+      fallingBlocksRestart();
+    })();
+    </script>
+</body>
+</html>
