@@ -438,6 +438,7 @@
                     Game Over!<br>
                     <button onclick="fallingBlocksRestart()" style="font-size:24px;padding:10px 24px;border-radius:5px;margin-top:10px;border:none;background:#008080;color:#fff;">Restart</button>
                   </div>
+                  <div style="color: #555; font-size: 24px; margin-top: 10px;">Use ← → arrow keys to move</div>
                 </div>
             </div>
 
@@ -609,7 +610,7 @@
         setInterval(updateClock, 1000);
         updateClock();
     </script>
-    <!-- FALLING BLOCKS SURVIVAL GAME SCRIPT -->
+    <!-- ENHANCED FALLING BLOCKS SURVIVAL GAME SCRIPT -->
     <script>
     (function(){
       const canvas = document.getElementById('falling-blocks-canvas');
@@ -617,7 +618,7 @@
       const ctx = canvas.getContext('2d');
       const scoreDiv = document.getElementById('falling-blocks-score');
       const gameoverDiv = document.getElementById('falling-blocks-gameover');
-      const playerWidth = 60, playerHeight = 18;
+      const playerWidth = 40, playerHeight = 18;
       let playerX = (canvas.width-playerWidth)/2;
       const playerY = canvas.height - playerHeight - 6;
       let leftArrow = false, rightArrow = false;
@@ -625,29 +626,42 @@
       let speed = 2.3;
       let score = 0;
       let gameover = false;
+      let tick = 0;
+      
       function drawPlayer() {
         ctx.fillStyle = '#00fa81';
         ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
       }
+      
       function drawBlocks() {
         ctx.fillStyle = '#ff4747';
         for (let b of blocks) ctx.fillRect(b.x, b.y, b.size, b.size);
       }
+      
       function updateBlocks() {
         for (let b of blocks) b.y += b.speed;
-        while (blocks.length && blocks[0].y > canvas.height) {
-          blocks.shift();
-          score++;
+        // Remove off-screen blocks and increment score
+        let removed = 0;
+        blocks = blocks.filter(b => {
+          if (b.y > canvas.height) { removed++; return false; }
+          return true;
+        });
+        if (removed > 0) {
+          score += removed;
           scoreDiv.innerText = "Score: " + score;
-          spawnBlock();
-          if (score % 6 === 0) speed += 0.4;
+          if (score % 5 === 0) speed += 0.5; // Increase speed every 5 points, faster acceleration
         }
       }
-      function spawnBlock() {
-        const blockSize = 40;
-        const x = Math.random() * (canvas.width-blockSize);
-        blocks.push({x, y: -blockSize, size:blockSize, speed:speed});
+      
+      function spawnBlockBatch(n) {
+        for (let i = 0; i < n; i++) {
+          const blockSize = 40;
+          const x = Math.random() * (canvas.width-blockSize);
+          const delay = Math.random() * 20; // Random delay for staggered spawning
+          blocks.push({x, y: -blockSize - delay, size:blockSize, speed:speed});
+        }
       }
+      
       function detectCollisions() {
         for (let b of blocks) {
           if (
@@ -661,32 +675,55 @@
           }
         }
       }
+      
       function loop() {
         if (gameover) return;
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        if (leftArrow && playerX > 0) playerX -= 6;
-        if (rightArrow && playerX < canvas.width-playerWidth) playerX += 6;
-        drawPlayer(); drawBlocks(); updateBlocks(); detectCollisions();
+        
+        if (leftArrow && playerX > 0) playerX -= 7;
+        if (rightArrow && playerX < canvas.width-playerWidth) playerX += 7;
+        
+        drawPlayer();
+        drawBlocks();
+        updateBlocks();
+        detectCollisions();
+        
+        tick++;
+        // Spawn blocks more frequently and in smaller batches for faster gameplay
+        if (tick % 35 === 0) { // Every 35 frames (~0.6 sec at 60fps)
+          let toSpawn = Math.floor(1 + score/20); // Fewer blocks but faster pace
+          if (toSpawn > 3) toSpawn = 3; // Cap at 3 blocks max
+          spawnBlockBatch(toSpawn);
+        }
+        
         requestAnimationFrame(loop);
       }
+      
       function fallingBlocksRestart() {
         blocks = [];
         playerX = (canvas.width-playerWidth)/2;
-        speed = 2.3; score = 0; gameover = false;
+        speed = 2.3; 
+        score = 0; 
+        gameover = false; 
+        tick = 0;
         gameoverDiv.style.display = "none";
         scoreDiv.innerText = "Score: 0";
-        spawnBlock();
+        spawnBlockBatch(2); // Start with 2 blocks
         requestAnimationFrame(loop);
       }
+      
       window.fallingBlocksRestart = fallingBlocksRestart;
+      
       document.addEventListener('keydown', function(e){
         if (e.code==='ArrowLeft') leftArrow=true;
         if (e.code==='ArrowRight') rightArrow=true;
       });
+      
       document.addEventListener('keyup', function(e){
         if (e.code==='ArrowLeft') leftArrow=false;
         if (e.code==='ArrowRight') rightArrow=false;
       });
+      
       fallingBlocksRestart();
     })();
     </script>
