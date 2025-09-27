@@ -281,7 +281,7 @@
             margin-left: auto;
         }
 
-        /* Mobile optimizations */
+
         @media (max-width: 768px) {
             body {
                 font-size: 42px;
@@ -551,6 +551,7 @@
                             <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn" onclick="sendMessage()">SEND MESSAGE</button>
+                        <div id="email-status" style="margin-top: 15px; font-size: 24px;"></div>
                     </div>
                     
                     <p>Interested in collaboration or have a project in mind? Feel free to reach out! I'm always open to discussing new opportunities and interesting projects.</p>
@@ -565,9 +566,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS
+
         (function(){
-            emailjs.init("O6rCnAM1omC4ZI_Fr");
+            try {
+                emailjs.init("O6rCnAM1omC4ZI_Fr");
+                console.log("EmailJS initialized successfully");
+            } catch (error) {
+                console.error("EmailJS initialization failed:", error);
+            }
         })();
 
         function showPage(pageId, event) {
@@ -584,24 +590,46 @@
         function sendMessage() {
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            if (email && message) {
-                // EmailJS send
-                emailjs.send("service_ylagbep", "template_z4rwbmk", {
-                    from_email: email,
-                    message: message,
-                    to_email: "arturs@codebylapins.com"
-                })
-                .then(function(response) {
-                    alert('Message sent successfully!');
-                    document.getElementById('email').value = '';
-                    document.getElementById('message').value = '';
-                }, function(error) {
-                    alert('Failed to send message. Please try again.');
-                    console.log('EmailJS error:', error);
-                });
-            } else {
-                alert('Please fill in both email and message fields.');
+            const statusDiv = document.getElementById('email-status');
+            
+
+            statusDiv.innerHTML = '';
+            
+            if (!email || !message) {
+                statusDiv.innerHTML = '<span style="color: #e05353;">Please fill in both email and message fields.</span>';
+                return;
             }
+            
+
+            statusDiv.innerHTML = '<span style="color: #000080;">Sending message...</span>';
+            
+            console.log("Attempting to send email with:", {
+                service: "service_ylagbep",
+                template: "template_z4rwbmk",
+                data: { from_email: email, message: message, to_email: "arturs@codebylapins.com" }
+            });
+            
+            // Check if emailjs is available
+            if (typeof emailjs === 'undefined') {
+                console.error("EmailJS not loaded");
+                statusDiv.innerHTML = '<span style="color: #e05353;">EmailJS library not loaded. Please refresh and try again.</span>';
+                return;
+            }
+            
+            emailjs.send("service_ylagbep", "template_z4rwbmk", {
+                name: email,
+                message: message
+            })
+            .then(function(response) {
+                console.log('EmailJS SUCCESS:', response);
+                statusDiv.innerHTML = '<span style="color: #008000;">Message sent successfully!</span>';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            })
+            .catch(function(error) {
+                console.error('EmailJS ERROR:', error);
+                statusDiv.innerHTML = '<span style="color: #e05353;">Failed to send message: ' + (error.text || error.message || 'Unknown error') + '</span>';
+            });
         }
 
         function updateClock() {
@@ -613,7 +641,7 @@
         setInterval(updateClock, 1000);
         updateClock();
     </script>
-    <!-- ENHANCED FALLING BLOCKS SURVIVAL GAME SCRIPT -->
+
     <script>
     (function(){
       const canvas = document.getElementById('falling-blocks-canvas');
@@ -644,7 +672,7 @@
       
       function updateBlocks() {
         for (let b of blocks) b.y += b.speed;
-        // Remove off-screen blocks and increment score
+
         let removed = 0;
         blocks = blocks.filter(b => {
           if (b.y > canvas.height) { removed++; return false; }
@@ -653,7 +681,7 @@
         if (removed > 0) {
           score += removed;
           scoreDiv.innerText = "Score: " + score;
-          if (score % 5 === 0) speed += 0.5; // Increase speed every 5 points, faster acceleration
+          if (score % 5 === 0) speed += 0.5;
         }
       }
       
@@ -661,7 +689,7 @@
         for (let i = 0; i < n; i++) {
           const blockSize = 40;
           const x = Math.random() * (canvas.width-blockSize);
-          const delay = Math.random() * 20; // Random delay for staggered spawning
+          const delay = Math.random() * 20; 
           blocks.push({x, y: -blockSize - delay, size:blockSize, speed:speed});
         }
       }
@@ -693,10 +721,9 @@
         detectCollisions();
         
         tick++;
-        // Spawn blocks more frequently and in smaller batches for faster gameplay
-        if (tick % 35 === 0) { // Every 35 frames (~0.6 sec at 60fps)
-          let toSpawn = Math.floor(1 + score/20); // Fewer blocks but faster pace
-          if (toSpawn > 3) toSpawn = 3; // Cap at 3 blocks max
+        if (tick % 35 === 0) {
+          let toSpawn = Math.floor(1 + score/20);
+          if (toSpawn > 3) toSpawn = 3; 
           spawnBlockBatch(toSpawn);
         }
         
@@ -707,7 +734,7 @@
         gameStarted = true;
         gameover = false;
         document.getElementById('falling-blocks-start').style.display = 'none';
-        spawnBlockBatch(2); // Start with 2 blocks
+        spawnBlockBatch(2);
         requestAnimationFrame(loop);
       }
       
@@ -723,7 +750,7 @@
         document.getElementById('falling-blocks-start').style.display = "block";
         scoreDiv.innerText = "Score: 0";
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        drawPlayer(); // Show player in initial position
+        drawPlayer(); 
       }
       
       window.fallingBlocksStart = fallingBlocksStart;
@@ -739,7 +766,7 @@
         if (e.code==='ArrowRight') rightArrow=false;
       });
       
-      // Initialize game - show player and start button
+
       ctx.clearRect(0,0,canvas.width,canvas.height);
       drawPlayer();
     })();
